@@ -25,65 +25,62 @@
 
     <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
     
-    <!-- Scripts de Tracker -->
-    <script src="https://legadoconsultoria.online/core/tracker.js"></script>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         html, body { height: 100%; }
-        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
+        body { font-family: 'Open Sans', sans-serif; font-weight: 300; background-color: #081419; }
         .hidden { display: none; }
         .step-wrapper { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .step-wrapper.active { transform: scale(1.05); }
         .step-container { display: flex; justify-content: center; width: 100%; max-width: 600px; margin: 0 auto; align-items: flex-start; }
-        .step { flex-grow: 1; text-align: center; padding: 10px 0; margin: 0; color: white; font-weight: 700; font-size: 1rem; position: relative; background-color: #374151; transition: all 0.5s ease; }
-        .step-wrapper.active .step { background-color: #dc2626; }
-        .step-wrapper.completed .step { background-color: #059669; }
+        .step { flex-grow: 1; text-align: center; padding: 10px 0; margin: 0; color: white; font-weight: 400; font-size: 1rem; position: relative; background-color: #374151; transition: all 0.5s ease; }
+        .step-wrapper.active .step { background-color: #73a09f; }
+        .step-wrapper.completed .step { background-color: #73a09f; }
         .step-wrapper:not(:first-child) .step { margin-left: 2px; }
         .step-arrow { clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%); }
         .step-arrow-end { clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%); }
         .step.final { clip-path: none; }
         .progress-info { text-align: center; margin-bottom: 1rem; }
-        .progress-percentage { font-size: 1.5rem; font-weight: 800; color: #dc2626; }
-        .progress-estimate { font-size: 0.875rem; color: #6b7280; font-weight: 600; }
-        @keyframes pulse-red {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        .progress-percentage { font-size: 1.5rem; font-weight: 400; color: #30ddc9; }
+        .progress-estimate { font-size: 0.875rem; color: #73a09f; font-weight: 300; }
+        @keyframes pulse-button {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(115, 160, 159, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(115, 160, 159, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(115, 160, 159, 0); }
         }
-        .pulsing-red-button { animation: pulse-red 2s infinite; }
+        .pulsing-red-button { animation: pulse-button 2s infinite; }
         @keyframes checkmark {
             0% { transform: scale(0) rotate(45deg); }
             50% { transform: scale(1.2) rotate(45deg); }
             100% { transform: scale(1) rotate(45deg); }
         }
         .answer-btn { position: relative; overflow: hidden; }
-        .answer-btn.selected { background-color: #059669 !important; border-color: #047857 !important; }
+        .answer-btn.selected { background-color: #30ddc9 !important; border-color: #30ddc9 !important; }
         .answer-btn.disabled { opacity: 0.5; cursor: not-allowed; }
         .answer-btn .checkmark { display: none; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; }
         .answer-btn.selected .checkmark { display: block; animation: checkmark 0.3s ease; }
         .answer-btn .checkmark::after { content: ''; position: absolute; width: 8px; height: 14px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); left: 6px; top: 2px; }
-        .urgency-banner { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; padding: 0.75rem; text-align: center; font-weight: 600; font-size: 0.875rem; animation: pulse-red 3s infinite; }
+        .urgency-banner { background: linear-gradient(135deg, #73a09f 0%, #73a09f 100%); color: white; padding: 0.75rem; text-align: center; font-weight: 300; font-size: 0.875rem; animation: pulse-button 3s infinite; }
         .social-proof { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; background: #f0fdf4; border-radius: 0.5rem; margin: 1rem 0; }
         .avatar-stack { display: flex; margin-left: -8px; }
         .avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; background: #d1d5db; margin-left: -8px; }
         .score-gauge { width: 100%; height: 30px; background: #e5e7eb; border-radius: 15px; overflow: hidden; position: relative; margin: 1rem 0; }
-        .score-fill { height: 100%; background: linear-gradient(90deg, #dc2626 0%, #f59e0b 50%, #10b981 100%); transition: width 1.5s ease; position: relative; }
-        .score-indicator { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: white; font-weight: 700; font-size: 0.875rem; }
+        .score-fill { height: 100%; background: linear-gradient(90deg, #73a09f 0%, #73a09f 50%, #73a09f 100%); transition: width 1.5s ease; position: relative; }
+        .score-indicator { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: white; font-weight: 400; font-size: 0.875rem; }
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); display: none; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.visible { display: flex; opacity: 1; }
         .modal-content { background: white; padding: 2rem; border-radius: 1.5rem; max-width: 450px; width: 90%; position: relative; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
         .modal-overlay.visible .modal-content { transform: scale(1); }
-        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; font-weight: bold; cursor: pointer; color: #9ca3af; }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; font-weight: 300; cursor: pointer; color: #9ca3af; }
         #progress-bar-fill { width: 0%; transition: width 1s ease-in-out; }
-        .vsl-headline { font-size: clamp(24px, 4vw, 36px); font-weight: 800; line-height: 1.2; max-width: 720px; color: #1c2230; margin: 0 auto; }
-        .vsl-headline strong { color: #C30000; }
-        .vsl-deck { font-size: clamp(16px, 2vw, 18px); color: #555; max-width: 720px; margin: 0.75rem auto 0; }
-        .vsl-deck strong { font-weight: 700; }
+        .vsl-headline { font-size: clamp(24px, 4vw, 36px); font-weight: 400; line-height: 1.2; max-width: 720px; color: #ffffff; margin: 0 auto; }
+        .vsl-headline strong { color: #73a09f; font-weight: 600; }
+        .vsl-deck { font-size: clamp(16px, 2vw, 18px); color: #73a09f; max-width: 720px; margin: 0.75rem auto 0; font-weight: 300; }
+        .vsl-deck strong { font-weight: 400; }
         
         /* Progressive Reveal Animation */
         .reveal-item { opacity: 0; transform: translateY(20px); animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
@@ -116,32 +113,32 @@
         gtag('config', 'AW-11266123733');
     </script>
 </head>
-<body class="bg-gray-50">
+<body style="background-color: #081419;">
 
-    <div class="w-full max-w-3xl mx-auto bg-white shadow-lg">
-        <header class="p-3 flex items-center space-x-3 border-b">
+    <div class="w-full max-w-3xl mx-auto shadow-lg" style="background-color: #081419;">
+        <header class="p-3 flex items-center space-x-3 border-b" style="border-color: #73a09f;">
             <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
                 <img src="https://i.postimg.cc/fR2F1TTw/Captura-de-Tela-2025-07-11-a-s-18-39-41.png" alt="Ícone Diagnóstico Sucessório" class="w-full h-full object-cover">
             </div>
-            <span class="font-semibold text-gray-700 text-sm">Diagnóstico Sucessório</span>
+            <span class="text-sm" style="color: #ffffff; font-weight: 400;">Diagnóstico Sucessório</span>
         </header>
 
         <main class="p-4 md:p-6">
-            <div id="initial-disclaimer" class="bg-red-50 p-4 rounded-lg text-center mb-8 border border-red-200">
-                <p class="font-bold text-base text-red-800">Seu patrimônio está protegido?</p>
-                <p class="font-semibold text-sm text-red-700 mt-1">Em apenas 3 minutos, descubra se sua família está segura — ou se o governo levará parte do que é seu por direito.</p>
+            <div id="initial-disclaimer" class="p-4 rounded-lg text-center mb-8" style="background-color: #0a1315; border: 1px solid #73a09f;">
+                <p class="text-base" style="color: #ffffff; font-weight: 400;">Seu patrimônio está protegido?</p>
+                <p class="text-sm mt-1" style="color: #73a09f; font-weight: 300;">Em apenas 3 minutos, descubra se sua família está segura — ou se o governo levará parte do que é seu por direito.</p>
             </div>
 
             <!-- BARRA DE PROGRESSO -->
             <div id="quiz-progress-container" class="w-full max-w-xl mx-auto mb-8">
-                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                <div class="flex justify-between text-xs mb-1" style="color: #73a09f; font-weight: 400;">
                     <span>Início</span>
                     <span>Análise em andamento</span>
                     <span>Final</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden shadow-inner">
-                    <div id="quiz-progress-fill" class="bg-gradient-to-r from-red-500 to-red-600 h-4 rounded-full transition-all duration-700 ease-out flex items-center justify-end pr-2 shadow-lg" style="width: 15%;">
-                        <span id="quiz-progress-text" class="text-[10px] text-white font-bold leading-none">15%</span>
+                <div class="w-full rounded-full h-4 overflow-hidden shadow-inner" style="background-color: #0a1315;">
+                    <div id="quiz-progress-fill" class="h-4 rounded-full transition-all duration-700 ease-out flex items-center justify-end pr-2 shadow-lg" style="width: 15%; background-color: #73a09f;">
+                        <span id="quiz-progress-text" class="text-[10px] leading-none" style="color: #ffffff; font-weight: 400;">15%</span>
                     </div>
                 </div>
             </div>
@@ -149,95 +146,74 @@
             <div id="quiz-content">
                 <div id="step-1-content" class="quiz-step">
                     <div class="text-center">
-                        <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Qual faixa representa melhor o valor do seu patrimônio hoje?</h1>
+                        <h1 class="text-xl md:text-2xl mb-6" style="color: #ffffff; font-weight: 400;">Qual faixa representa melhor o valor do seu patrimônio hoje?</h1>
                         <div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
-                            <button onclick="goToStep(2, event)" data-value="A" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">R$ 500 mil a R$ 1 milhão<span class="checkmark"></span></button>
-                            <button onclick="goToStep(2, event)" data-value="B" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">R$ 1 milhão a R$ 3 milhões<span class="checkmark"></span></button>
-                            <button onclick="goToStep(2, event)" data-value="C" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">R$ 3 milhões a R$ 10 milhões<span class="checkmark"></span></button>
-                            <button onclick="goToStep(2, event)" data-value="D" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Acima de R$ 10 milhões<span class="checkmark"></span></button>
+                            <button onclick="goToStep(2, event)" data-value="A" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">R$ 500 mil a R$ 1 milhão<span class="checkmark"></span></button>
+                            <button onclick="goToStep(2, event)" data-value="B" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">R$ 1 milhão a R$ 3 milhões<span class="checkmark"></span></button>
+                            <button onclick="goToStep(2, event)" data-value="C" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">R$ 3 milhões a R$ 10 milhões<span class="checkmark"></span></button>
+                            <button onclick="goToStep(2, event)" data-value="D" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Acima de R$ 10 milhões<span class="checkmark"></span></button>
                         </div>
                     </div>
                 </div>
                 <div id="step-2-content" class="quiz-step hidden">
                     <div class="text-center">
-                        <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Você já tomou alguma atitude concreta para proteger seus bens?</h1>
+                        <h1 class="text-xl md:text-2xl mb-6" style="color: #ffffff; font-weight: 400;">Você já tomou alguma atitude concreta para proteger seus bens?</h1>
                         <div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
-                            <button onclick="goToStep(3, event)" data-value="A" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Ainda não fiz nada<span class="checkmark"></span></button>
-                            <button onclick="goToStep(3, event)" data-value="B" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Só abri empresa em meu nome<span class="checkmark"></span></button>
-                            <button onclick="goToStep(3, event)" data-value="C" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Já tenho uma holding limitada<span class="checkmark"></span></button>
-                            <button onclick="goToStep(3, event)" data-value="D" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Já montei um planejamento sucessório completo<span class="checkmark"></span></button>
+                            <button onclick="goToStep(3, event)" data-value="A" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Ainda não fiz nada<span class="checkmark"></span></button>
+                            <button onclick="goToStep(3, event)" data-value="B" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Só abri empresa em meu nome<span class="checkmark"></span></button>
+                            <button onclick="goToStep(3, event)" data-value="C" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Já tenho uma holding limitada<span class="checkmark"></span></button>
+                            <button onclick="goToStep(3, event)" data-value="D" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Já montei um planejamento sucessório completo<span class="checkmark"></span></button>
                         </div>
                     </div>
                 </div>
                 <div id="step-3-content" class="quiz-step hidden">
                     <div class="text-center">
-                        <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">O que mais te preocupa quando pensa na sucessão dos seus bens?</h1>
+                        <h1 class="text-xl md:text-2xl mb-6" style="color: #ffffff; font-weight: 400;">O que mais te preocupa quando pensa na sucessão dos seus bens?</h1>
                         <div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
-                            <button onclick="goToStep(4, event)" data-value="A" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Pagar menos impostos<span class="checkmark"></span></button>
-                            <button onclick="goToStep(4, event)" data-value="B" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Proteger dos credores<span class="checkmark"></span></button>
-                            <button onclick="goToStep(4, event)" data-value="C" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Facilitar a herança para os filhos<span class="checkmark"></span></button>
-                            <button onclick="goToStep(4, event)" data-value="D" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Desvincular da minha pessoa física<span class="checkmark"></span></button>
+                            <button onclick="goToStep(4, event)" data-value="A" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Pagar menos impostos<span class="checkmark"></span></button>
+                            <button onclick="goToStep(4, event)" data-value="B" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Proteger dos credores<span class="checkmark"></span></button>
+                            <button onclick="goToStep(4, event)" data-value="C" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Facilitar a herança para os filhos<span class="checkmark"></span></button>
+                            <button onclick="goToStep(4, event)" data-value="D" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Desvincular da minha pessoa física<span class="checkmark"></span></button>
                         </div>
                     </div>
                 </div>
                 <div id="step-4-content" class="quiz-step hidden">
                     <div class="text-center">
-                        <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Existe algum prazo específico para organizar sua estrutura patrimonial?</h1>
+                        <h1 class="text-xl md:text-2xl mb-6" style="color: #ffffff; font-weight: 400;">Existe algum prazo específico para organizar sua estrutura patrimonial?</h1>
                         <div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
-                            <button onclick="goToStep(5, event)" data-value="A" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Nos próximos 3 meses<span class="checkmark"></span></button>
-                            <button onclick="goToStep(5, event)" data-value="B" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Até dezembro deste ano<span class="checkmark"></span></button>
-                            <button onclick="goToStep(5, event)" data-value="C" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Ao longo do próximo ano<span class="checkmark"></span></button>
-                            <button onclick="goToStep(5, event)" data-value="D" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Não tenho prazo definido<span class="checkmark"></span></button>
+                            <button onclick="goToStep(5, event)" data-value="A" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Nos próximos 3 meses<span class="checkmark"></span></button>
+                            <button onclick="goToStep(5, event)" data-value="B" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Até dezembro deste ano<span class="checkmark"></span></button>
+                            <button onclick="goToStep(5, event)" data-value="C" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Ao longo do próximo ano<span class="checkmark"></span></button>
+                            <button onclick="goToStep(5, event)" data-value="D" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Não tenho prazo definido<span class="checkmark"></span></button>
                         </div>
                     </div>
                 </div>
                 <div id="step-5-content" class="quiz-step hidden">
                     <div class="text-center">
-                        <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Quem normalmente participa das decisões financeiras importantes na sua família?</h1>
+                        <h1 class="text-xl md:text-2xl mb-6" style="color: #ffffff; font-weight: 400;">Quem normalmente participa das decisões financeiras importantes na sua família?</h1>
                         <div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
-                            <button onclick="goToStep(6, event)" data-value="A" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Eu decido sozinho(a)<span class="checkmark"></span></button>
-                            <button onclick="goToStep(6, event)" data-value="B" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Eu e meu(minha) cônjuge<span class="checkmark"></span></button>
-                            <button onclick="goToStep(6, event)" data-value="C" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Família + consultores<span class="checkmark"></span></button>
-                            <button onclick="goToStep(6, event)" data-value="D" class="answer-btn bg-green-600 text-white font-bold py-4 px-4 text-base rounded-lg border-b-4 border-green-800 hover:bg-green-700 transition-transform transform hover:scale-105">Tenho sócios que precisam aprovar<span class="checkmark"></span></button>
+                            <button onclick="goToStep(6, event)" data-value="A" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Eu decido sozinho(a)<span class="checkmark"></span></button>
+                            <button onclick="goToStep(6, event)" data-value="B" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Eu e meu(minha) cônjuge<span class="checkmark"></span></button>
+                            <button onclick="goToStep(6, event)" data-value="C" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Família + consultores<span class="checkmark"></span></button>
+                            <button onclick="goToStep(6, event)" data-value="D" class="answer-btn py-4 px-4 text-base rounded-lg border-b-4 transition-transform transform hover:scale-105" style="background-color: #30ddc9; color: #0a1315; border-color: #30ddc9; font-weight: 400;">Tenho sócios que precisam aprovar<span class="checkmark"></span></button>
                         </div>
                     </div>
                 </div>
                 <div id="ai-analysis-screen" class="quiz-step hidden flex flex-col items-center justify-center py-12">
                     <div class="relative w-24 h-24 mb-6">
-                        <div class="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
-                        <div class="absolute inset-0 border-4 border-red-600 rounded-full border-t-transparent animate-spin"></div>
-                        <svg class="absolute inset-0 m-auto w-10 h-10 text-red-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <div class="absolute inset-0 border-4 rounded-full" style="border-color: #0a1315;"></div>
+                        <div class="absolute inset-0 border-4 rounded-full border-t-transparent animate-spin" style="border-color: #73a09f;"></div>
+                        <svg class="absolute inset-0 m-auto w-10 h-10 animate-pulse" style="color: #73a09f;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800 text-center mb-2">Analisando seu Perfil...</h2>
-                    <p class="text-gray-600 text-center max-w-xs mx-auto animate-pulse">Nossa IA está cruzando suas respostas com a legislação vigente e estratégias de proteção.</p>
+                    <h2 class="text-2xl text-center mb-2" style="color: #ffffff; font-weight: 400;">Analisando seu Perfil...</h2>
+                    <p class="text-center max-w-xs mx-auto animate-pulse" style="color: #73a09f;">Nossa IA está cruzando suas respostas com a legislação vigente e estratégias de proteção.</p>
                 </div>
                 <div id="step-6-content" class="quiz-step hidden"></div>
             </div>
         </main>
-        <footer class="text-center p-4 bg-gray-100 border-t mt-4">
-            <p class="text-xs text-gray-500">&copy; 2024 Diagnóstico Sucessório. Todos os direitos reservados.</p>
+        <footer class="text-center p-4 border-t mt-4" style="background-color: #0a1315; border-color: #73a09f;">
+            <p class="text-xs" style="color: #73a09f;">&copy; 2024 Diagnóstico Sucessório. Todos os direitos reservados.</p>
         </footer>
-    </div>
-
-    <div id="contact-modal" class="modal-overlay">
-        <div class="modal-content">
-            <span onclick="closeModal()" class="modal-close">&times;</span>
-            <div class="text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Falta pouco...</h3>
-                <p class="text-sm text-gray-600 mb-4">Receba sua análise completa em 2 minutos</p>
-                <div class="w-full bg-gray-200 rounded-full h-3.5 mb-1">
-                    <div id="progress-bar-fill" class="bg-gradient-to-r from-red-500 to-red-700 h-3.5 rounded-full flex items-center justify-center" style="width: 0%;">
-                        <span class="text-white text-xs font-bold" id="progress-bar-text">95%</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-6 text-center">
-                <p class="text-sm text-gray-600 mb-4">Agende direto na nossa agenda, sem envio de dados.</p>
-                <a href="https://calendar.app.google/gvSJoRh1567XSGNJ9" target="_blank" rel="noopener noreferrer" class="pulsing-red-button inline-flex items-center justify-center w-full bg-gradient-to-r from-green-600 to-green-800 text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 shadow-lg transform hover:scale-105 transition-transform text-base">
-                    AGENDAR HORÁRIO
-                </a>
-            </div>
-        </div>
     </div>
     
     <script>
@@ -256,8 +232,8 @@
         
         const initialDisclaimer = document.getElementById('initial-disclaimer');
         const reportContainer = document.getElementById('step-6-content');
-        const modal = document.getElementById('contact-modal');
-        const schedulingLink = 'https://calendar.app.google/gvSJoRh1567XSGNJ9';
+        const whatsappNumber = '5527996225557';
+        const whatsappMessage = 'Olá! Gostaria de conversar com a assistente sobre planejamento sucessório.';
 
         // --- Personalized Content Data ---
         const reportData = { 'A_DESPROTEGIDO': { riskLevel: "RISCO MODERADO", riskSubtitle: "Seu patrimônio está vulnerável a complicações fiscais e sucessórias." }, 'A_PROTEGIDO': { riskLevel: "RISCO MODERADO", riskSubtitle: "Sua estrutura atual pode estar desatualizada e precisa de revisão." }, 'B_DESPROTEGIDO': { riskLevel: "ALTO RISCO", riskSubtitle: "Seu patrimônio está vulnerável a confisco fiscal e complicações sucessórias." }, 'B_PROTEGIDO': { riskLevel: "ALTO RISCO", riskSubtitle: "Sua estrutura atual pode não resistir à nova fiscalização da Receita Federal." }, 'C_DESPROTEGIDO': { riskLevel: "RISCO CRÍTICO", riskSubtitle: "Patrimônio milionário sem proteção é um alvo prioritário para fiscalização." }, 'C_PROTEGIDO': { riskLevel: "ALTO RISCO", riskSubtitle: "Sua estrutura de proteção é insuficiente para o seu nível patrimonial." }, 'D_DESPROTEGIDO': { riskLevel: "RISCO MÁXIMO", riskSubtitle: "Ultra-patrimônio exposto representa um risco de confisco massivo." }, 'D_PROTEGIDO': { riskLevel: "RISCO CRÍTICO", riskSubtitle: "Sua estrutura de proteção é amadora para um patrimônio de elite." } };
@@ -284,16 +260,10 @@
                 console.error('❌ Tracker não está carregado! Verifique se o script https://legadoconsultoria.online/core/tracker.js está acessível.');
             }
 
-            if(modal) modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
-            });
+
         });
 
         // --- Helper Functions ---
-        function openSchedulingLink() {
-            window.open(schedulingLink, '_blank', 'noopener,noreferrer');
-        }
-
         function goToStep(stepNumber, event) {
             if (!event || !event.currentTarget) return;
             const clickedButton = event.currentTarget;
@@ -368,7 +338,11 @@
                     // Atualiza barra para 95% durante o "loading" da IA para dar sensação de trabalho final
                     if(quizProgressFill) {
                         quizProgressFill.style.width = '95%';
-                        if(quizProgressText) quizProgressText.innerText = '95%';
+                        quizProgressFill.style.backgroundColor = '#73a09f';
+                        if(quizProgressText) {
+                            quizProgressText.innerText = '95%';
+                            quizProgressText.style.color = '#ffffff';
+                        }
                     }
 
                     setTimeout(() => {
@@ -390,6 +364,37 @@
             const pageId = `${patrimonio}_${grupoEstrutura}`;
             const data = reportData[pageId] || { riskLevel: "Análise Padrão", riskSubtitle: "Seu perfil requer uma análise detalhada."};
             
+            // Definir cores baseadas no nível de risco
+            let cardBgColor, cardBorderColor, labelColor;
+            const riskLevel = data.riskLevel.toUpperCase();
+            
+            if (riskLevel.includes('MODERADO')) {
+                // Risco Moderado - Amarelo/Laranja
+                cardBgColor = '#3d2800';
+                cardBorderColor = '#f59e0b';
+                labelColor = '#fbbf24';
+            } else if (riskLevel.includes('ALTO RISCO')) {
+                // Alto Risco - Laranja intenso
+                cardBgColor = '#3d1500';
+                cardBorderColor = '#f97316';
+                labelColor = '#fb923c';
+            } else if (riskLevel.includes('CRÍTICO')) {
+                // Risco Crítico - Vermelho
+                cardBgColor = '#3d0000';
+                cardBorderColor = '#dc2626';
+                labelColor = '#ef4444';
+            } else if (riskLevel.includes('MÁXIMO')) {
+                // Risco Máximo - Vermelho escuro intenso
+                cardBgColor = '#450000';
+                cardBorderColor = '#991b1b';
+                labelColor = '#dc2626';
+            } else {
+                // Padrão
+                cardBgColor = '#0a1315';
+                cardBorderColor = '#73a09f';
+                labelColor = '#73a09f';
+            }
+            
             // Textos dos pontos de análise
             const pointsText = [ 
                  analysisPointsData.patrimonio[patrimonio], 
@@ -400,9 +405,9 @@
             // Construção do HTML com animação progressiva (Delays em ms)
             // 0ms: Card de Risco
             const riskCard = `
-                <div class="reveal-item bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-r-lg mb-6" style="animation-delay: 0ms">
-                    <p class="font-bold text-sm">STATUS DO SEU PATRIMÔNIO</p>
-                    <p class="text-2xl font-extrabold">${data.riskLevel}</p>
+                <div class="reveal-item border-l-4 p-4 rounded-r-lg mb-6" style="animation-delay: 0ms; background-color: ${cardBgColor}; border-color: ${cardBorderColor}; color: #ffffff;">
+                    <p class="text-sm" style="color: ${labelColor}; font-weight: 400;">STATUS DO SEU PATRIMÔNIO</p>
+                    <p class="text-2xl" style="font-weight: 600;">${data.riskLevel}</p>
                     <p class="text-sm">${data.riskSubtitle}</p>
                 </div>`;
 
@@ -410,28 +415,28 @@
             const pointsHTML = pointsText.map((point, index) => {
                 const delay = 600 + (index * 600);
                 return `
-                <div class="reveal-item bg-white border border-gray-200 p-4 rounded-lg flex items-start" style="animation-delay: ${delay}ms">
-                    <span class="text-red-500 mr-3 mt-1">&#10148;</span>
-                    <p class="text-gray-700 text-sm">${point}</p>
+                <div class="reveal-item border p-4 rounded-lg flex items-start" style="animation-delay: ${delay}ms; background-color: #0a1315; border-color: #73a09f;">
+                    <span class="mr-3 mt-1" style="color: #73a09f;">&#10148;</span>
+                    <p class="text-sm" style="color: #ffffff;">${point}</p>
                 </div>`;
             }).join('');
 
             // 2400ms: Card de Solução
             const solutionCard = `
-                <div class="reveal-item bg-green-100 border-l-4 border-green-500 text-green-800 p-4 rounded-r-lg mb-8" style="animation-delay: 2400ms">
-                    <p class="font-bold">EXISTE UMA SOLUÇÃO PARA O SEU CASO</p>
+                <div class="reveal-item border-l-4 p-4 rounded-r-lg mb-8" style="animation-delay: 2400ms; background-color: #0a1315; border-color: #73a09f; color: #ffffff;">
+                    <p style="color: #73a09f; font-weight: 400;">EXISTE UMA SOLUÇÃO PARA O SEU CASO</p>
                     <p class="text-sm mt-1">Assista à análise completa abaixo para descobrir como famílias com patrimônio similar ao seu estão se protegendo.</p>
                 </div>`;
 
             // 3000ms: Botão
             const button = `
                 <div class="reveal-item text-center" style="animation-delay: 3000ms">
-                    <button id="show-video-btn" onclick="showVideo()" class="pulsing-red-button w-full max-w-md mx-auto bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold py-3 px-4 rounded-lg shadow-md text-base">
+                    <button id="show-video-btn" onclick="showVideo()" class="pulsing-red-button w-full max-w-md mx-auto py-3 px-4 rounded-lg shadow-md text-base" style="background-color: #73a09f; color: #ffffff; font-weight: 400;">
                         ASSISTIR ANÁLISE COMPLETA
                     </button>
                 </div>`;
             
-            reportContainer.innerHTML = `<div id="report-content-wrapper">${riskCard}<div class="space-y-4 mb-6"><h3 class="font-bold text-gray-800 reveal-item" style="animation-delay: 400ms">ANÁLISE DA SUA SITUAÇÃO:</h3>${pointsHTML}</div>${solutionCard}${button}</div>`;
+            reportContainer.innerHTML = `<div id="report-content-wrapper">${riskCard}<div class="space-y-4 mb-6"><h3 class="reveal-item" style="animation-delay: 400ms; color: #ffffff; font-weight: 400;">ANÁLISE DA SUA SITUAÇÃO:</h3>${pointsHTML}</div>${solutionCard}${button}</div>`;
         }
 
         function showVideo() {
@@ -446,7 +451,7 @@
             // INSERÇÃO DO VÍDEO DO YOUTUBE AQUI - COM OTIMIZAÇÃO
             document.getElementById('quiz-content').innerHTML = `
                 <div class="text-center mb-8 pt-4">
-                    <h1 class="vsl-headline">A estrutura secreta que <strong class="text-red-600">97% dos ultra-ricos usam</strong> para transferir bilhões aos herdeiros</h1>
+                    <h1 class="vsl-headline">A estrutura secreta que <strong>97% dos ultra-ricos usam</strong> para transferir bilhões aos herdeiros</h1>
                 </div>
                 
                 <div class="video-wrapper mb-4">
@@ -454,7 +459,7 @@
                 </div>
 
                 <div class="hidden mt-6 text-center" id="cta-container">
-                    <button onclick="openModalWithTracking()" class="pulsing-red-button w-full max-w-md mx-auto bg-gradient-to-r from-red-600 to-red-800 text-white font-bold py-3 px-4 rounded-lg shadow-lg">AGENDAR HORÁRIO</button>
+                    <button onclick="openWhatsApp()" class="pulsing-red-button w-full max-w-md mx-auto py-3 px-4 rounded-lg shadow-lg" style="background-color: #73a09f; color: #ffffff; font-weight: 400;">CONVERSAR NO WHATSAPP</button>
                 </div>`;
             
             triggerDelayScript();
@@ -477,19 +482,13 @@
             }, delayMs);
         }
 
-        function openModalWithTracking() {
+        function openWhatsApp() {
             if (typeof Tracker !== 'undefined') {
-                Tracker.trackCTA(2, 'AGENDAR HORÁRIO', 'vsl_cta');
-                console.log('✅ CTA #2 rastreado: AGENDAR HORÁRIO');
+                Tracker.trackCTA(2, 'CONVERSAR NO WHATSAPP', 'vsl_cta');
+                console.log('✅ CTA #2 rastreado: CONVERSAR NO WHATSAPP');
             }
-            modal.classList.add('visible');
-        }
-        
-        function closeModal() { modal.classList.remove('visible'); }
-
-        function openSchedulingFromModal() {
-            closeModal();
-            openSchedulingLink();
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
         }
     </script>
 </body>
