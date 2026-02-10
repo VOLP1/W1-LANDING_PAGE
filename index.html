@@ -448,47 +448,20 @@
             if(progressBarContainer) progressBarContainer.classList.add('hidden'); // Oculta barra antiga se existir
             if(quizProgressContainer) quizProgressContainer.classList.add('hidden'); // Oculta barra nova
             if(initialDisclaimer) initialDisclaimer.classList.add('hidden');
-            
+
             // INSERÇÃO DO VÍDEO DO YOUTUBE AQUI - COM OTIMIZAÇÃO
             document.getElementById('quiz-content').innerHTML = `
                 <div class="text-center mb-8 pt-4">
                     <h1 class="vsl-headline">A estrutura secreta que <strong>97% dos ultra-ricos usam</strong> para transferir bilhões aos herdeiros</h1>
                 </div>
-                
                 <div class="video-wrapper mb-4">
                    <iframe src="https://www.youtube.com/embed/JELDQBd-Rl4?autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-
-                <div class="hidden mt-6 text-center" id="cta-container">
-                    <button onclick="openWhatsApp()" class="pulsing-red-button w-full max-w-md mx-auto py-3 px-4 rounded-lg shadow-lg" style="background-color: #73a09f; color: #ffffff; font-weight: 400;">Agendar Reunião de Diagnóstico</button>
+                <div class="mt-6 text-center" id="cta-container">
+                    <a href="https://form.respondi.app/NOzSDd1i" target="_blank" rel="noopener noreferrer">
+                        <button class="pulsing-red-button w-full max-w-md mx-auto py-3 px-4 rounded-lg shadow-lg" style="background-color: #73a09f; color: #ffffff; font-weight: 400;">Agendar Reunião de Diagnóstico</button>
+                    </a>
                 </div>`;
-            
-            triggerDelayScript();
-        }
-        
-        function triggerDelayScript() {
-            // Tempo em milissegundos para exibir o botão de agendamento.
-            // Configurado para 1 minuto e 46 segundos (106000ms).
-            // Se quiser exibir imediatamente para testes, mude para 0.
-            const delayMs = 106000;
-            
-            setTimeout(() => {
-                const ctaContainer = document.getElementById('cta-container');
-                if (ctaContainer) {
-                    ctaContainer.classList.remove('hidden');
-                    // Efeito de fade in suave opcional
-                    ctaContainer.classList.add('animate-fade-in-up'); 
-                }
-            }, delayMs);
-        }
-
-        function openWhatsApp() {
-            if (typeof Tracker !== 'undefined') {
-                Tracker.trackCTA(2, 'Agendar Reunião de Diagnóstico', 'vsl_cta');
-                console.log('✅ CTA #2 rastreado: Agendar Reunião de Diagnóstico');
-            }
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
         }
     </script>
 </body>
