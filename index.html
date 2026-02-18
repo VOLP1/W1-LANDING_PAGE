@@ -6,31 +6,11 @@
     <title>Consultoria Financeira</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1691441744989537');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1691441744989537&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         html, body { height: 100%; }
         body { font-family: 'Open Sans', sans-serif; font-weight: 300; background-color: #081419; }
@@ -65,28 +45,11 @@
         .answer-btn .checkmark { display: none; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; }
         .answer-btn.selected .checkmark { display: block; animation: checkmark 0.3s ease; }
         .answer-btn .checkmark::after { content: ''; position: absolute; width: 8px; height: 14px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); left: 6px; top: 2px; }
-        .urgency-banner { background: linear-gradient(135deg, #73a09f 0%, #73a09f 100%); color: white; padding: 0.75rem; text-align: center; font-weight: 300; font-size: 0.875rem; animation: pulse-button 3s infinite; }
-        .social-proof { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; background: #f0fdf4; border-radius: 0.5rem; margin: 1rem 0; }
-        .avatar-stack { display: flex; margin-left: -8px; }
-        .avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; background: #d1d5db; margin-left: -8px; }
-        .score-gauge { width: 100%; height: 30px; background: #e5e7eb; border-radius: 15px; overflow: hidden; position: relative; margin: 1rem 0; }
-        .score-fill { height: 100%; background: linear-gradient(90deg, #73a09f 0%, #73a09f 50%, #73a09f 100%); transition: width 1.5s ease; position: relative; }
-        .score-indicator { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: white; font-weight: 400; font-size: 0.875rem; }
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); display: none; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.3s ease; }
-        .modal-overlay.visible { display: flex; opacity: 1; }
-        .modal-content { background: white; padding: 2rem; border-radius: 1.5rem; max-width: 450px; width: 90%; position: relative; transform: scale(0.95); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
-        .modal-overlay.visible .modal-content { transform: scale(1); }
-        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; font-weight: 300; cursor: pointer; color: #9ca3af; }
-        #progress-bar-fill { width: 0%; transition: width 1s ease-in-out; }
-        .vsl-headline { font-size: clamp(24px, 4vw, 36px); font-weight: 400; line-height: 1.2; max-width: 720px; color: #ffffff; margin: 0 auto; }
-        .vsl-headline strong { color: #73a09f; font-weight: 600; }
-        .vsl-deck { font-size: clamp(16px, 2vw, 18px); color: #73a09f; max-width: 720px; margin: 0.75rem auto 0; font-weight: 300; }
-        .vsl-deck strong { font-weight: 400; }
-        
+
         /* Progressive Reveal Animation */
         .reveal-item { opacity: 0; transform: translateY(20px); animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
-        
+
         /* Video Wrapper for Responsive YouTube */
         .video-wrapper {
             position: relative;
@@ -103,23 +66,16 @@
             width: 100%;
             height: 100%;
         }
+        .vsl-headline { font-size: clamp(24px, 4vw, 36px); font-weight: 400; line-height: 1.2; max-width: 720px; color: #ffffff; margin: 0 auto; }
+        .vsl-headline strong { color: #73a09f; font-weight: 600; }
     </style>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11266123733"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);} 
-        gtag('js', new Date());
-        gtag('config', 'AW-11266123733');
-    </script>
 </head>
 <body style="background-color: #081419;">
 
     <div class="w-full max-w-3xl mx-auto shadow-lg" style="background-color: #081419;">
         <header class="p-3 flex items-center space-x-3 border-b" style="border-color: #73a09f;">
             <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
-                <img src="foto.jpeg" alt="Ícone Diagnóstico Sucessório" class="w-full h-full object-cover">
+                <img src="foto.jpeg" alt="Ícone Diagnóstico Patrimonial" class="w-full h-full object-cover">
             </div>
             <span class="text-sm" style="color: #ffffff; font-weight: 400;">Diagnóstico Patrimonial</span>
         </header>
@@ -216,112 +172,63 @@
             <p class="text-xs" style="color: #73a09f;">&copy; 2026 Diagnóstico Patrimonial. Todos os direitos reservados.</p>
         </footer>
     </div>
-    
+
     <script>
         // --- State Management ---
         let currentStep = 1;
         const quizAnswers = {};
         const answerText = {};
-        let utmParams = {};
 
         // --- DOM Elements ---
         const stepContents = document.querySelectorAll('.quiz-step');
-        const progressBarContainer = document.getElementById('progress-bar-container'); 
         const quizProgressContainer = document.getElementById('quiz-progress-container');
         const quizProgressFill = document.getElementById('quiz-progress-fill');
         const quizProgressText = document.getElementById('quiz-progress-text');
-        
         const initialDisclaimer = document.getElementById('initial-disclaimer');
         const reportContainer = document.getElementById('step-6-content');
-        const whatsappNumber = '5527996225557';
-        const whatsappMessage = 'Olá! Tudo bem?\nGostaria de conversar com um especialista patrimonial para entender melhor como organizar e proteger meu patrimônio.\nPodemos agendar uma reunião, sem custo?';
 
         // --- Personalized Content Data ---
         const reportData = { 'A_DESPROTEGIDO': { riskLevel: "RISCO MODERADO", riskSubtitle: "Seu patrimônio está vulnerável a complicações fiscais e sucessórias." }, 'A_PROTEGIDO': { riskLevel: "RISCO MODERADO", riskSubtitle: "Sua estrutura atual pode estar desatualizada e precisa de revisão." }, 'B_DESPROTEGIDO': { riskLevel: "ALTO RISCO", riskSubtitle: "Seu patrimônio está vulnerável a confisco fiscal e complicações sucessórias." }, 'B_PROTEGIDO': { riskLevel: "ALTO RISCO", riskSubtitle: "Sua estrutura atual pode não resistir à nova fiscalização da Receita Federal." }, 'C_DESPROTEGIDO': { riskLevel: "RISCO CRÍTICO", riskSubtitle: "Patrimônio milionário sem proteção é um alvo prioritário para fiscalização." }, 'C_PROTEGIDO': { riskLevel: "ALTO RISCO", riskSubtitle: "Sua estrutura de proteção é insuficiente para o seu nível patrimonial." }, 'D_DESPROTEGIDO': { riskLevel: "RISCO MÁXIMO", riskSubtitle: "Ultra-patrimônio exposto representa um risco de confisco massivo." }, 'D_PROTEGIDO': { riskLevel: "RISCO CRÍTICO", riskSubtitle: "Sua estrutura de proteção é amadora para um patrimônio de elite." } };
         const analysisPointsData = { patrimonio: { A: "<strong>Patrimônio em Crescimento:</strong> Seu patrimônio está na fase mais crítica. É agora que as decisões certas evitam problemas milionários no futuro.", B: "<strong>Patrimônio na Zona de Risco:</strong> Você está na faixa onde o governo mais 'pesca'. É grande o suficiente para chamar atenção, mas muitas vezes desprotegido.", C: "<strong>Patrimônio de Alto Valor:</strong> Patrimônios como o seu são alvos prioritários de fiscalização. A complexidade dos seus bens exige uma proteção robusta e profissional.", D: "<strong>Ultra-Patrimônio:</strong> Seu nível patrimonial exige a mesma estrutura de proteção usada por bilionários." }, estrutura: { DESPROTEGIDO: "<strong>Estrutura Inexistente:</strong> A ausência total de uma estrutura de proteção é como deixar a porta da sua casa aberta. Seus bens estão 100% expostos.", PROTEGIDO: "<strong>Holding Básica é uma Armadilha:</strong> 95% das holdings 'padrão' cometem erros fatais que a Receita Federal já sabe identificar. Sua proteção atual pode ser uma bomba-relógio." }, preocupacao: { A: "<strong>Foco em Impostos:</strong> Enquanto você se preocupa só com impostos, está ignorando os outros 4 riscos que podem destruir seu patrimônio (credores, sucessão, liquidez, brigas familiares).", B: "<strong>Risco de Credores:</strong> Proteger-se de credores é fundamental, mas uma blindagem mal feita pode ser facilmente desconsiderada pela justiça, colocando tudo em risco.", C: "<strong>Sucessão e Herança:</strong> Facilitar a herança é mais do que evitar o inventário. É sobre garantir a liquidez para os herdeiros e impedir que conflitos destruam o que você construiu.", D: "<strong>Blindagem Fiscal:</strong> Desvincular da sua pessoa física não é apenas sobre impostos, mas sobre criar uma barreira legal que protege seus bens de riscos empresariais e pessoais." } };
 
-        // --- Inicialização ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // Verificar se o Tracker está carregado
-            if (typeof Tracker !== 'undefined') {
-                console.log('✅ Tracker carregado com sucesso');
-                try {
-                    Tracker.init('patrimonial');
-                    console.log('✅ Tracker inicializado: patrimonial');
-                    Tracker.track('quiz_start');
-                    console.log('✅ Evento rastreado: quiz_start');
-                    Tracker.track('view_step', { step: 0 });
-                    console.log('✅ Evento rastreado: view_step 0');
-                    utmParams = Tracker.getUtmParams();
-                    console.log('✅ UTM Params capturados:', utmParams);
-                } catch (error) {
-                    console.error('❌ Erro ao inicializar Tracker:', error);
-                }
-            } else {
-                console.error('❌ Tracker não está carregado! Verifique se o script https://legadoconsultoria.online/core/tracker.js está acessível.');
-            }
-
-
-        });
-
-        // --- Helper Functions ---
         function goToStep(stepNumber, event) {
             if (!event || !event.currentTarget) return;
             const clickedButton = event.currentTarget;
-            const stepIndex = currentStep - 1;
             const answerValue = clickedButton.dataset.value;
 
-            // Visual feedback
             clickedButton.classList.add('selected');
 
-            // Disable buttons
             const currentStepButtons = document.querySelectorAll(`#step-${currentStep}-content .answer-btn`);
             currentStepButtons.forEach(btn => {
                 if (btn !== clickedButton) btn.classList.add('disabled');
                 btn.style.pointerEvents = 'none';
             });
 
-            if (typeof Tracker !== 'undefined') {
-                Tracker.track('answer', { step: stepIndex, answer: answerValue });
-                console.log(`✅ Resposta rastreada - Step ${stepIndex}, Answer: ${answerValue}`);
-            }
             quizAnswers[`q${currentStep}`] = answerValue;
             answerText[`q${currentStep}`] = clickedButton.innerText.replace(/\s*$/, '');
 
             setTimeout(() => {
                 const executeStepChange = () => {
-                    const nextStepIndex = stepNumber - 1;
-                    if (typeof Tracker !== 'undefined') {
-                        Tracker.track('view_step', { step: nextStepIndex });
-                        console.log(`✅ Visualização de step rastreada: ${nextStepIndex}`);
-                    }
-
                     stepContents.forEach(content => content.classList.add('hidden'));
-                    
+
                     if (stepNumber === 6) {
                         if(initialDisclaimer) initialDisclaimer.classList.add('hidden');
-                        if(quizProgressContainer) quizProgressContainer.classList.add('hidden'); // Esconde a barra no final
-                        if (typeof Tracker !== 'undefined') {
-                            Tracker.track('quiz_complete');
-                            console.log('✅ Quiz completo rastreado');
-                        }
+                        if(quizProgressContainer) quizProgressContainer.classList.add('hidden');
                         generateReport();
                     }
-                    
+
                     const activeContent = document.getElementById(`step-${stepNumber}-content`);
                     if (activeContent) activeContent.classList.remove('hidden');
 
-                    // ATUALIZAÇÃO DA BARRA DE PROGRESSO
-                    // Lógica não-linear: Salto grande no início para motivar
                     const progressMap = {
-                        1: 15, // Inicial (não usado aqui pois já começa em 15)
-                        2: 45, // Foi para pergunta 2
-                        3: 65, // Foi para pergunta 3
-                        4: 80, // Foi para pergunta 4
-                        5: 90, // Foi para pergunta 5
-                        6: 100 // Final
+                        1: 15,
+                        2: 45,
+                        3: 65,
+                        4: 80,
+                        5: 90,
+                        6: 100
                     };
-                    
+
                     const newProgress = progressMap[stepNumber] || 0;
                     if(quizProgressFill) {
                         quizProgressFill.style.width = `${newProgress}%`;
@@ -335,8 +242,7 @@
                     stepContents.forEach(content => content.classList.add('hidden'));
                     const aiScreen = document.getElementById('ai-analysis-screen');
                     if (aiScreen) aiScreen.classList.remove('hidden');
-                    
-                    // Atualiza barra para 95% durante o "loading" da IA para dar sensação de trabalho final
+
                     if(quizProgressFill) {
                         quizProgressFill.style.width = '95%';
                         quizProgressFill.style.backgroundColor = '#73a09f';
@@ -364,47 +270,38 @@
             const grupoEstrutura = (estrutura === 'A' || estrutura === 'B') ? 'DESPROTEGIDO' : 'PROTEGIDO';
             const pageId = `${patrimonio}_${grupoEstrutura}`;
             const data = reportData[pageId] || { riskLevel: "Análise Padrão", riskSubtitle: "Seu perfil requer uma análise detalhada."};
-            
-            // Definir cores baseadas no nível de risco
+
             let cardBgColor, cardBorderColor, labelColor;
             const riskLevel = data.riskLevel.toUpperCase();
-            
+
             if (riskLevel.includes('MODERADO')) {
-                // Risco Moderado - Amarelo/Laranja
                 cardBgColor = '#3d2800';
                 cardBorderColor = '#f59e0b';
                 labelColor = '#fbbf24';
             } else if (riskLevel.includes('ALTO RISCO')) {
-                // Alto Risco - Laranja intenso
                 cardBgColor = '#3d1500';
                 cardBorderColor = '#f97316';
                 labelColor = '#fb923c';
             } else if (riskLevel.includes('CRÍTICO')) {
-                // Risco Crítico - Vermelho
                 cardBgColor = '#3d0000';
                 cardBorderColor = '#dc2626';
                 labelColor = '#ef4444';
             } else if (riskLevel.includes('MÁXIMO')) {
-                // Risco Máximo - Vermelho escuro intenso
                 cardBgColor = '#450000';
                 cardBorderColor = '#991b1b';
                 labelColor = '#dc2626';
             } else {
-                // Padrão
                 cardBgColor = '#0a1315';
                 cardBorderColor = '#73a09f';
                 labelColor = '#73a09f';
             }
-            
-            // Textos dos pontos de análise
-            const pointsText = [ 
-                 analysisPointsData.patrimonio[patrimonio], 
-                 analysisPointsData.estrutura[grupoEstrutura], 
-                 analysisPointsData.preocupacao[preocupacao] 
-             ];
 
-            // Construção do HTML com animação progressiva (Delays em ms)
-            // 0ms: Card de Risco
+            const pointsText = [
+                analysisPointsData.patrimonio[patrimonio],
+                analysisPointsData.estrutura[grupoEstrutura],
+                analysisPointsData.preocupacao[preocupacao]
+            ];
+
             const riskCard = `
                 <div class="reveal-item border-l-4 p-4 rounded-r-lg mb-6" style="animation-delay: 0ms; background-color: ${cardBgColor}; border-color: ${cardBorderColor}; color: #ffffff;">
                     <p class="text-sm" style="color: ${labelColor}; font-weight: 400;">STATUS DO SEU PATRIMÔNIO</p>
@@ -412,7 +309,6 @@
                     <p class="text-sm">${data.riskSubtitle}</p>
                 </div>`;
 
-            // 600ms, 1200ms, 1800ms: Pontos de Análise
             const pointsHTML = pointsText.map((point, index) => {
                 const delay = 600 + (index * 600);
                 return `
@@ -422,40 +318,32 @@
                 </div>`;
             }).join('');
 
-            // 2400ms: Card de Solução
             const solutionCard = `
                 <div class="reveal-item border-l-4 p-4 rounded-r-lg mb-8" style="animation-delay: 2400ms; background-color: #0a1315; border-color: #73a09f; color: #ffffff;">
                     <p style="color: #73a09f; font-weight: 400;">EXISTE UMA SOLUÇÃO PARA O SEU CASO</p>
                     <p class="text-sm mt-1">Assista à análise completa abaixo para descobrir como famílias com patrimônio similar ao seu estão se protegendo.</p>
                 </div>`;
 
-            // 3000ms: Botão
             const button = `
                 <div class="reveal-item text-center" style="animation-delay: 3000ms">
                     <button id="show-video-btn" onclick="showVideo()" class="pulsing-red-button w-full max-w-md mx-auto py-3 px-4 rounded-lg shadow-md text-base" style="background-color: #73a09f; color: #ffffff; font-weight: 400;">
                         ASSISTIR ANÁLISE COMPLETA
                     </button>
                 </div>`;
-            
+
             reportContainer.innerHTML = `<div id="report-content-wrapper">${riskCard}<div class="space-y-4 mb-6"><h3 class="reveal-item" style="animation-delay: 400ms; color: #ffffff; font-weight: 400;">ANÁLISE DA SUA SITUAÇÃO:</h3>${pointsHTML}</div>${solutionCard}${button}</div>`;
         }
 
         function showVideo() {
-            if (typeof Tracker !== 'undefined') {
-                Tracker.trackCTA(1, 'ASSISTIR ANÁLISE COMPLETA', 'post_quiz');
-                console.log('✅ CTA #1 rastreado: ASSISTIR ANÁLISE COMPLETA');
-            }
-            if(progressBarContainer) progressBarContainer.classList.add('hidden'); // Oculta barra antiga se existir
-            if(quizProgressContainer) quizProgressContainer.classList.add('hidden'); // Oculta barra nova
+            if(quizProgressContainer) quizProgressContainer.classList.add('hidden');
             if(initialDisclaimer) initialDisclaimer.classList.add('hidden');
 
-            // INSERÇÃO DO VÍDEO DO YOUTUBE AQUI - COM OTIMIZAÇÃO
             document.getElementById('quiz-content').innerHTML = `
                 <div class="text-center mb-8 pt-4">
                     <h1 class="vsl-headline">A estrutura secreta que <strong>97% dos ultra-ricos usam</strong> para transferir bilhões aos herdeiros</h1>
                 </div>
                 <div class="video-wrapper mb-4">
-                   <iframe src="https://www.youtube.com/embed/JELDQBd-Rl4?autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/JELDQBd-Rl4?autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="mt-6 text-center" id="cta-container">
                     <a href="https://form.respondi.app/NOzSDd1i" target="_blank" rel="noopener noreferrer">
